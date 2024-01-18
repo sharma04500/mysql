@@ -7,34 +7,34 @@ SQL is used to perform various actions on different databases like Mysql or post
 
 The SQL commands are classified and categorised into different types based on the usage of the command as follows:
 
-### Types of SQL Commands:
-> ### Data Definition Language (DDL):
->> - Create
->> - Alter
->> - Drop
->> - Truncate
+## Types of SQL Commands:
+### Data Definition Language (DDL):
+ - Create
+ - Alter
+ - Drop
+ - Truncate
 
-> ### Data Manipulation Language (DML):
->> - Select
->> - Update
->> - Delete
->> - Insert
+### Data Manipulation Language (DML):
+ - Select
+ - Update
+ - Delete
+ - Insert
 
-> ### Data Control Language (DCL):
->> - Grant
->> - Revoke
+### Data Control Language (DCL):
+ - Grant
+ - Revoke
 
-> ### Transaction Control Language (TCL):
->> - Commit
->> - Rollback 
+### Transaction Control Language (TCL):
+ - Commit
+ - Rollback 
 
 ### SQL Data types:
- - Exact Numeric
+- Exact Numeric
     - int
     - smallint
     - bit
     - decimal
- - Approximate Numeric
+- Approximate Numeric
     - float
     - real
 - Date and time
