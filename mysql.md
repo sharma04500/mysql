@@ -52,11 +52,11 @@ The SQL commands are classified and categorised into different types based on th
 
 ### SQL Operators:
 - Arithmetic
-    - +
-    - -
-    - *
-    - /
-    - %
+    - "+"
+    - "-"
+    - "*"
+    - "/"
+    - "%"
 - Logical
     - ALL
     - AND
