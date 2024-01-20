@@ -48,4 +48,6 @@ PINCODE char(6),
 primary key(id))
 ;
 ```
+Upon creation of primary key, a "NULL" row will be created.
 In the above case, the user or application cannot write duplicate values or repeated values in different rows for the column `id`.
+
