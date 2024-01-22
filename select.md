@@ -177,3 +177,36 @@ mysql> select * from actor order by actor_id asc;
 |        5 | JOHNNY      | LOLLOBRIGIDA | 2006-02-15 04:34:33 |
 +----------+-------------+--------------+---------------------+
 ```
+
+### Group By
+`Group By` clause is used to filter out the rows of of a specific column which have same values. Group By is generally used to perform aggregate functions such as `count`,`sum`,`avg`,`min` and `max` on multiple values belonging to the specified column.
+For example, if we are about to derive the total amount being paid as salaries to all the employees working in the Human Resources department of a company, we can run the following query to fetch the total value.
+```
+select sum(salary) as total_hr_salary from employees where department='HR' group by department;
+```
+
+The usual structure of a group by clause along with select statement will be as follows: 
+```
+select <aggregate_function(<column1_name>)> as <alias> from <table_name> where <column_name>=<value> group by <column_name>;
+```
+where,
+aggregate function = count or sum or avg or min or max.
+column1_name = Name of the column, on which the aggregate function should be performed.
+alias = key to be displayed for the value.
+table_name = Name of the table oon which the query is being executed.
+column_name = Name of the column being used to filter out the required rows.
+value = the value of the column being used as a selector in order to pick the required rows from the table.
+column_name = Name of the column, whose values are to be grouped in order to perform the required function.
+
+#### *Example - 2:*
+```
+mysql> select sum(funds_received) as Indian_donataions from ram_funds where country='India' group by country;
++-------------------+
+| Indian_donataions |
++-------------------+
+|            963.65 |
++-------------------+
+1 row in set, 6 warnings (0.00 sec)
+```
+where the values of the column country are grouped together after being filtered out by the where statement and sum is performed on all the values and displayed under set alias `Indian_donations`.
+For a better picture of this example refer to the table printed in the file `rammandir.sql` file of this repository.
