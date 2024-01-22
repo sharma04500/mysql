@@ -88,20 +88,92 @@ mysql> select first_name as actors from sakila.actor;
 | actors      |
 +-------------+
 | PENELOPE    |
-| NICK        |
-| ED          |
 | JENNIFER    |
 |      ..     |
 |      ..     |
 |      ..     |
 |      ..     |
 | MERYL       |
-| JAYNE       |
-| BELA        |
-| REESE       |
-| MARY        |
 | JULIA       |
 | THORA       |
 +-------------+
 200 rows in set (0.00 sec)
+```
+### Like
+Like is a keyword which is used to filter out the data using similarity references to one of the words.
+For example, consider the actor table of the sakila database of mysql:
+```
+mysql> select * from actor;
++----------+-------------+--------------+---------------------+
+| actor_id | first_name  | last_name    | last_update         |
++----------+-------------+--------------+---------------------+
+|        1 | PENELOPE    | GUINESS      | 2006-02-15 04:34:33 |
+|        2 | NICK        | WAHLBERG     | 2006-02-15 04:34:33 |
+|        3 | ED          | CHASE        | 2006-02-15 04:34:33 |
+|        4 | JENNIFER    | DAVIS        | 2006-02-15 04:34:33 |
+|        5 | JOHNNY      | LOLLOBRIGIDA | 2006-02-15 04:34:33 |
+|        6 | BETTE       | NICHOLSON    | 2006-02-15 04:34:33 |
+|        7 | GRACE       | MOSTEL       | 2006-02-15 04:34:33 |
+|        8 | MATTHEW     | JOHANSSON    | 2006-02-15 04:34:33 |
+|        9 | JOE         | SWANK        | 2006-02-15 04:34:33 |
+|       10 | CHRISTIAN   | GABLE        | 2006-02-15 04:34:33 |
+```
+To extract the details of `BETTE` alone and we exactly don't remember the spelling, we can run the following query using `LIKE`:
+```
+mysql> select * from actor where first_name like '%%TTE';
++----------+------------+-----------+---------------------+
+| actor_id | first_name | last_name | last_update         |
++----------+------------+-----------+---------------------+
+|        6 | BETTE      | NICHOLSON | 2006-02-15 04:34:33 |
++----------+------------+-----------+---------------------+
+1 row in set (0.00 sec)
+```
+where %% represents the unknown part of the referenced keyword and can be used to reference the starting letters or middle letters of the string as shown in the below examples.
+```
+mysql> select * from actor where last_name like 'LOL%%';
++----------+------------+--------------+---------------------+
+| actor_id | first_name | last_name    | last_update         |
++----------+------------+--------------+---------------------+
+|        5 | JOHNNY     | LOLLOBRIGIDA | 2006-02-15 04:34:33 |
++----------+------------+--------------+---------------------+
+1 row in set (0.02 sec)
+```
+```
+mysql> select * from actor where last_name like '%%VERS%%';
++----------+------------+-------------+---------------------+
+| actor_id | first_name | last_name   | last_update         |
++----------+------------+-------------+---------------------+
+|      180 | JEFF       | SILVERSTONE | 2006-02-15 04:34:33 |
+|      195 | JAYNE      | SILVERSTONE | 2006-02-15 04:34:33 |
++----------+------------+-------------+---------------------+
+2 rows in set (0.00 sec)
+```
+
+### Order By
+`order by` is a keyword which is used to sort out the data with respect to sorting a particular column into ascending or descending orders as shown below in the following examples where `actor_id` is the column name and `desc` represents descending order.
+
+``` 
+mysql> SELECT * FROM actor ORDER BY actor_id DESC;
++----------+-------------+--------------+---------------------+
+| actor_id | first_name  | last_name    | last_update         |
++----------+-------------+--------------+---------------------+
+|      200 | THORA       | TEMPLE       | 2006-02-15 04:34:33 |
+|      199 | JULIA       | FAWCETT      | 2006-02-15 04:34:33 |
+|      198 | MARY        | KEITEL       | 2006-02-15 04:34:33 |
+|      197 | REESE       | WEST         | 2006-02-15 04:34:33 |
+|      196 | BELA        | WALKEN       | 2006-02-15 04:34:33 |
++----------+-------------+--------------+---------------------+
+```
+In the below example, `asc` represents ascending order, even if we don't specify asc or desc along with order by, the query by default arranges the data in ascending order.
+```
+mysql> select * from actor order by actor_id asc;
++----------+-------------+--------------+---------------------+
+| actor_id | first_name  | last_name    | last_update         |
++----------+-------------+--------------+---------------------+
+|        1 | PENELOPE    | GUINESS      | 2006-02-15 04:34:33 |
+|        2 | NICK        | WAHLBERG     | 2006-02-15 04:34:33 |
+|        3 | ED          | CHASE        | 2006-02-15 04:34:33 |
+|        4 | JENNIFER    | DAVIS        | 2006-02-15 04:34:33 |
+|        5 | JOHNNY      | LOLLOBRIGIDA | 2006-02-15 04:34:33 |
++----------+-------------+--------------+---------------------+
 ```
