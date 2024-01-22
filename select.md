@@ -47,4 +47,61 @@ For example:
 ```
 select * from sakila.actor where actor_id=140;
 ```
-where * is wildcard and 
+where * is wildcard and `actor_id` is the column name and `140` is the value stored in one of the rows of the table.
+This statement will fetch the entire row where the column `actor_id` is mentioned as 140 i.e., this will print the details of the actor stored in the table `actor`.
+
+### Alias (as)
+In SQL statements, we will usually write the logic required to fetch the data that is intended to be retrieved with respect to the requirements. In some cases, though we have successfully fetched the data from the database, the data might not be easily readable. So, to provision readability we can assign a value for the fetched result and the key used to represent the result of the query is called alias and is mentioned as `as` in the SQL statement.
+For example,
+`select mod(10, 8);` will perform the division 10/8 and prints the remainder `2`, which can also be the value obtained through subtraction. 
+```
+mysql> select mod(10,8);
++-----------+
+| mod(10,8) |
++-----------+
+|         2 |
++-----------+
+1 row in set (0.00 sec)
+```
+So, In such cases, we can set an alias as remainder using the statement
+```
+select mod(10,8) as remainder;
+```
+This will print the result as follows,
+```
+mysql> select mod(10,8) as remainder;
++-----------+
+| remainder |
++-----------+
+|         2 |
++-----------+
+1 row in set (0.00 sec)
+```
+
+```
+select first_name as actors from sakila.actor;
+```
+This will leave the output as follows:
+```
+mysql> select first_name as actors from sakila.actor;
++-------------+
+| actors      |
++-------------+
+| PENELOPE    |
+| NICK        |
+| ED          |
+| JENNIFER    |
+|      ..     |
+|      ..     |
+|      ..     |
+|      ..     |
+| MERYL       |
+| JAYNE       |
+| BELA        |
+| REESE       |
+| MARY        |
+| JULIA       |
+| THORA       |
++-------------+
+200 rows in set (0.00 sec)
+```
