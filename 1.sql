@@ -52,7 +52,4 @@ insert into details (id, name)
 values (2, 'siva');
 
 insert into details (id, name, pincode)
-values (3, sharma, 524004)
-
-
-
+values (3, sharma, 524004);
